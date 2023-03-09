@@ -1,0 +1,46 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        Product Create
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="/products/create" method="POST" enctype="multipart/form-data">
+                                <div>
+                                    <input type="text" placeholder="Product Name *" name="name" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Description *" name="desc" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Stock *" name="stock" required="true"
+                                        pattern="\d*" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Price *" name="price" required="true"
+                                        pattern="\d*" />
+                                </div>
+                                <input type="file" name="image" id="fileToUpload"
+                                    accept="image/png, image/jpeg ,image/jpg">
+                                <div class="btn_box">
+                                    <button>
+                                        Create
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

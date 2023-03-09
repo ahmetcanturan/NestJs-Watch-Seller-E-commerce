@@ -1,0 +1,57 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        My Adress
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="/adress/create/<%=user.id%>" method="POST">
+                                <div>
+                                    <input type="text" placeholder="Name *" name="name" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Surname *" name="surname" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Adress Name *" name="adressName" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Country *" name="country" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="City *" name="city" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Adress *" name="adress" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="ZipCode *" name="zipCode" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="TC *" name="tc" required="true" />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Phone *" name="phone" required="true" />
+                                </div>
+                                <div class="btn_box">
+                                    <button>
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

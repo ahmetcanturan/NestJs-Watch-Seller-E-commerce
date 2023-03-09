@@ -1,0 +1,86 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        Product Create
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="/product/create" method="POST" enctype="multipart/form-data">
+                                <% for (err of error){%>
+                                    <% if(err.param=="name" ) {%>
+                                        <p style="color:red">
+                                            <%=err.msg%>
+                                        </p>
+                                        <% }%>
+                                            <% }%>
+                                                <div>
+                                                    <input type="text" placeholder="Product Name *" name="name"
+                                                        required="true" value="<%=record.name%>" />
+                                                </div>
+                                                <% for (err of error){%>
+                                                    <% if(err.param=="desc" ) {%>
+                                                        <p style="color:red">
+                                                            <%=err.msg%>
+                                                        </p>
+                                                        <% }%>
+                                                            <% }%>
+                                                                <div>
+                                                                    <input type="text" placeholder="Description *"
+                                                                        name="desc" required="true"
+                                                                        value="<%=record.desc%>" />
+                                                                </div>
+                                                                <% for (err of error){%>
+                                                                    <% if(err.param=="stock" ) {%>
+                                                                        <p style="color:red">
+                                                                            <%=err.msg%>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% }%>
+                                                                                <div>
+                                                                                    <input type="text"
+                                                                                        placeholder="Stock *"
+                                                                                        name="stock" required="true"
+                                                                                        value="<%=record.stock%>"
+                                                                                        pattern="\d*" />
+                                                                                </div>
+                                                                                <% for (err of error){%>
+                                                                                    <% if(err.param=="price" ) {%>
+                                                                                        <p style="color:red">
+                                                                                            <%=err.msg%>
+                                                                                        </p>
+                                                                                        <% }%>
+                                                                                            <% }%>
+                                                                                                <div>
+                                                                                                    <input type="text"
+                                                                                                        placeholder="Price *"
+                                                                                                        name="price"
+                                                                                                        required="true"
+                                                                                                        pattern="\d*"
+                                                                                                        value="<%=record.price%>" />
+                                                                                                </div>
+                                                                                                <input type="file"
+                                                                                                    name="image"
+                                                                                                    id="fileToUpload"
+                                                                                                    accept="image/png, image/jpeg ,image/jpg">
+                                                                                                <div class="btn_box">
+                                                                                                    <button>
+                                                                                                        Create
+                                                                                                    </button>
+                                                                                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

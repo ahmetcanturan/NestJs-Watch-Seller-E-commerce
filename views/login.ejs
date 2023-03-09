@@ -1,0 +1,36 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        Login
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="/login" method="POST">
+                                <div>
+                                    <input type="email" placeholder="Email *" name="email" required="true" />
+                                </div>
+                                <div>
+                                    <input type="password" placeholder="Password *" name="password" required="true" />
+                                </div>
+                                <div class="btn_box">
+                                    <button>
+                                        LOGIN
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

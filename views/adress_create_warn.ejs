@@ -1,0 +1,192 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        My Adress
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+
+                            <form action="/adress/create/<%=user.id%>" method="POST">
+                                <% for (err of error){%>
+                                    <% if(err.param=="name" ) {%>
+                                        <p style="color:red">
+                                            <%=err.msg%>
+                                        </p>
+                                        <% }%>
+                                            <% }%>
+                                                <div>
+                                                    <input type="text" placeholder="Name *" name="name"
+                                                        value="<%=record.name%>" required="true" />
+                                                </div>
+                                                <% for (err of error){%>
+                                                    <% if(err.param=="surname" ) {%>
+                                                        <p style="color:red">
+                                                            <%=err.msg%>
+                                                        </p>
+                                                        <% }%>
+                                                            <% }%>
+                                                                <div>
+                                                                    <input type="text" placeholder="Surname *"
+                                                                        name="surname" required="true"
+                                                                        value="<%=record.surname%>" />
+                                                                </div>
+                                                                <% for (err of error){%>
+                                                                    <% if(err.param=="adressName" ) {%>
+                                                                        <p style="color:red">
+                                                                            <%=err.msg%>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% }%>
+                                                                                <div>
+                                                                                    <input type="text"
+                                                                                        placeholder="Adress Name *"
+                                                                                        name="adressName"
+                                                                                        required="true"
+                                                                                        value="<%=record.adressName%>" />
+                                                                                </div>
+                                                                                <% for (err of error){%>
+                                                                                    <% if(err.param=="country" ) {%>
+                                                                                        <p style="color:red">
+                                                                                            <%=err.msg%>
+                                                                                        </p>
+                                                                                        <% }%>
+                                                                                            <% }%>
+                                                                                                <div>
+                                                                                                    <input type="text"
+                                                                                                        placeholder="Country *"
+                                                                                                        name="country"
+                                                                                                        required="true"
+                                                                                                        value="<%=record.country%>" />
+                                                                                                </div>
+                                                                                                <% for (err of error){%>
+                                                                                                    <% if(err.param=="city"
+                                                                                                        ) {%>
+                                                                                                        <p
+                                                                                                            style="color:red">
+                                                                                                            <%=err.msg%>
+                                                                                                        </p>
+                                                                                                        <% }%>
+                                                                                                            <% }%>
+                                                                                                                <div>
+                                                                                                                    <input
+                                                                                                                        type="text"
+                                                                                                                        placeholder="City *"
+                                                                                                                        name="city"
+                                                                                                                        required="true"
+                                                                                                                        value="<%=record.city%>" />
+                                                                                                                </div>
+                                                                                                                <% for
+                                                                                                                    (err
+                                                                                                                    of
+                                                                                                                    error){%>
+                                                                                                                    <% if(err.param=="adress"
+                                                                                                                        )
+                                                                                                                        {%>
+                                                                                                                        <p
+                                                                                                                            style="color:red">
+                                                                                                                            <%=err.msg%>
+                                                                                                                        </p>
+                                                                                                                        <%
+                                                                                                                            }%>
+                                                                                                                            <%
+                                                                                                                                }%>
+                                                                                                                                <div>
+                                                                                                                                    <input
+                                                                                                                                        type="text"
+                                                                                                                                        placeholder="Adress *"
+                                                                                                                                        name="adress"
+                                                                                                                                        required="true"
+                                                                                                                                        value="<%=record.adress%>" />
+                                                                                                                                </div>
+                                                                                                                                <% for
+                                                                                                                                    (err
+                                                                                                                                    of
+                                                                                                                                    error){%>
+                                                                                                                                    <% if(err.param=="zipCode"
+                                                                                                                                        )
+                                                                                                                                        {%>
+                                                                                                                                        <p
+                                                                                                                                            style="color:red">
+                                                                                                                                            <%=err.msg%>
+                                                                                                                                        </p>
+                                                                                                                                        <%
+                                                                                                                                            }%>
+                                                                                                                                            <%
+                                                                                                                                                }%>
+                                                                                                                                                <div>
+                                                                                                                                                    <input
+                                                                                                                                                        type="text"
+                                                                                                                                                        placeholder="ZipCode *"
+                                                                                                                                                        name="zipCode"
+                                                                                                                                                        required="true"
+                                                                                                                                                        value="<%=record.zipCode%>" />
+                                                                                                                                                </div>
+                                                                                                                                                <% for
+                                                                                                                                                    (err
+                                                                                                                                                    of
+                                                                                                                                                    error){%>
+                                                                                                                                                    <% if(err.param=="tc"
+                                                                                                                                                        )
+                                                                                                                                                        {%>
+                                                                                                                                                        <p
+                                                                                                                                                            style="color:red">
+                                                                                                                                                            <%=err.msg%>
+                                                                                                                                                        </p>
+                                                                                                                                                        <%
+                                                                                                                                                            }%>
+                                                                                                                                                            <%
+                                                                                                                                                                }%>
+                                                                                                                                                                <div>
+                                                                                                                                                                    <input
+                                                                                                                                                                        type="text"
+                                                                                                                                                                        placeholder="TC *"
+                                                                                                                                                                        name="tc"
+                                                                                                                                                                        required="true"
+                                                                                                                                                                        value="<%=record.tc%>" />
+                                                                                                                                                                </div>
+                                                                                                                                                                <% for
+                                                                                                                                                                    (err
+                                                                                                                                                                    of
+                                                                                                                                                                    error){%>
+                                                                                                                                                                    <% if(err.param=="phone"
+                                                                                                                                                                        )
+                                                                                                                                                                        {%>
+                                                                                                                                                                        <p
+                                                                                                                                                                            style="color:red">
+                                                                                                                                                                            <%=err.msg%>
+                                                                                                                                                                        </p>
+                                                                                                                                                                        <%
+                                                                                                                                                                            }%>
+                                                                                                                                                                            <%
+                                                                                                                                                                                }%>
+                                                                                                                                                                                <div>
+                                                                                                                                                                                    <input
+                                                                                                                                                                                        type="text"
+                                                                                                                                                                                        placeholder="Phone *"
+                                                                                                                                                                                        name="phone"
+                                                                                                                                                                                        required="true"
+                                                                                                                                                                                        value="<%=record.phone%>" />
+                                                                                                                                                                                </div>
+                                                                                                                                                                                <div
+                                                                                                                                                                                    class="btn_box">
+                                                                                                                                                                                    <button>
+                                                                                                                                                                                        Save
+                                                                                                                                                                                    </button>
+                                                                                                                                                                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

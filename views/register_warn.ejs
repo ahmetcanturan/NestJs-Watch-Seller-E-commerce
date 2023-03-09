@@ -1,0 +1,83 @@
+<%- include("./partials/header.ejs") %>
+    <%- include("./partials/navbar.ejs") %>
+
+        <!-- contact section -->
+        <section class="contact_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        Register
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="/register" method="POST">
+                                <% for (err of error){%>
+                                    <% if(err.param=="name" ) {%>
+                                        <p style="color:red">
+                                            <%=err.msg%>
+                                        </p>
+                                        <% }%>
+                                            <% }%>
+                                                <div>
+
+                                                    <input type="text" placeholder="Name *" name="name" required="true"
+                                                        value="<%=record.name%>" />
+                                                </div>
+                                                <% for (err of error){%>
+                                                    <% if(err.param=="surname" ) {%>
+                                                        <p style="color:red">
+                                                            <%=err.msg%>
+                                                        </p>
+                                                        <% }%>
+                                                            <% }%>
+                                                                <div>
+                                                                    <input type="text" placeholder="Surname *"
+                                                                        name="surname" value="<%=record.surname%>"
+                                                                        required="true" />
+                                                                </div>
+                                                                <% for (err of error){%>
+                                                                    <% if(err.param=="email" ) {%>
+                                                                        <p style="color:red">
+                                                                            <%=err.msg%>
+                                                                        </p>
+                                                                        <% }%>
+                                                                            <% }%>
+                                                                                <div>
+                                                                                    <input type="email"
+                                                                                        placeholder="Email *"
+                                                                                        name="email"
+                                                                                        value="<%=record.email%>"
+                                                                                        required="true" />
+                                                                                </div>
+                                                                                <% for (err of error){%>
+                                                                                    <% if(err.param=="password" ) {%>
+                                                                                        <p style="color:red">
+                                                                                            <%=err.msg%>
+                                                                                        </p>
+                                                                                        <% }%>
+                                                                                            <% }%>
+                                                                                                <div>
+                                                                                                    <input
+                                                                                                        type="password"
+                                                                                                        placeholder="Password *"
+                                                                                                        name="password"
+                                                                                                        required="true" />
+                                                                                                </div>
+
+                                                                                                <div class="btn_box">
+                                                                                                    <button>
+                                                                                                        REGISTER
+                                                                                                    </button>
+                                                                                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact section -->
+
+
+        <%- include("./partials/footer.ejs") %>

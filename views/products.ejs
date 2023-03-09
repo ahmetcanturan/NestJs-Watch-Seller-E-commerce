@@ -1,0 +1,151 @@
+<%- include("./partials/header.ejs") %>
+  <%- include("./partials/navbar.ejs") %>
+    <!-- product section -->
+    <section class="product_section ">
+      <div class="container">
+        <div class="product_heading">
+          <h2>
+            Top Sale Watches
+          </h2>
+        </div>
+        <div class="product_container">
+          <% for (item of bestSeller){%>
+            <div class="box">
+              <div class="box-content">
+                <div class="img-box">
+                  <img src="/uploads/<%=item.img_path%>" alt="">
+                </div>
+                <div class="detail-box">
+                  <div class="text">
+                    <h6>
+                      <%=item.name%>
+                    </h6>
+                    <h5>
+                      <span>$</span>
+                      <%=item.price%>
+                    </h5>
+                  </div>
+                  <div class="like">
+                    <h6>
+                      Like
+                    </h6>
+                    <div class="star_container">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-box">
+                <form action="/cart/create/<%=item._id%>" method="post">
+                  <button class="btn btn-primary" type="submit">Add To Cart</button>
+                </form>
+              </div>
+            </div>
+            <% }%>
+        </div>
+      </div>
+    </section>
+    <!-- product section -->
+    <section class="product_section ">
+      <div class="container">
+        <div class="product_heading">
+          <h2>
+            New Products
+          </h2>
+        </div>
+        <div class="product_container">
+          <% for (item of lastProducts){%>
+            <div class="box">
+              <div class="box-content">
+                <div class="img-box">
+                  <img src="/uploads/<%=item.img_path%>" alt="">
+                </div>
+                <div class="detail-box">
+                  <div class="text">
+                    <h6>
+                      <%=item.name%>
+                    </h6>
+                    <h5>
+                      <span>$</span>
+                      <%=item.price%>
+                    </h5>
+                  </div>
+                  <div class="like">
+                    <h6>
+                      Like
+                    </h6>
+                    <div class="star_container">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-box">
+                <form action="/cart/create/<%=item._id%>" method="post">
+                  <button class="btn btn-primary" type="submit">Add To Cart</button>
+                </form>
+              </div>
+            </div>
+            <% }%>
+        </div>
+      </div>
+    </section>
+
+    <!-- product section -->
+    <section class="product_section ">
+      <div class="container">
+        <div class="product_heading">
+          <h2>
+            All Products
+          </h2>
+        </div>
+        <div class="product_container">
+          <% for (item of getAll){%>
+            <div class="box">
+              <div class="box-content">
+                <div class="img-box">
+                  <img src="/uploads/<%=item.img_path%>" alt="">
+                </div>
+                <div class="detail-box">
+                  <div class="text">
+                    <h6>
+                      <%=item.name%>
+                    </h6>
+                    <h5>
+                      <span>$</span>
+                      <%=item.price%>
+                    </h5>
+                  </div>
+                  <div class="like">
+                    <h6>
+                      Like
+                    </h6>
+                    <div class="star_container">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-box">
+                <form action="/cart/create/<%=item._id%>" method="post">
+                  <button class="btn btn-primary" type="submit">Add To Cart</button>
+                </form>
+              </div>
+            </div>
+            <% }%>
+        </div>
+      </div>
+    </section>
+    <%- include("./partials/footer.ejs") %>

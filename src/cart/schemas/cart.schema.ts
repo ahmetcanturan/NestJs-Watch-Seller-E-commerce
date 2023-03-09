@@ -7,7 +7,7 @@ export type CartDocument = Cart & Document;
 export class Cart {
   @Prop({ unique: true, type: _schema.Types.ObjectId, ref: 'User' })
   userId: _schema.Types.ObjectId;
-  @Prop([{ type: _schema.Types.ObjectId, ref: 'Product' }])
+  @Prop([{ required: false, type: _schema.Types.ObjectId, ref: 'Product' }])
   products: _schema.Types.ObjectId[];
   @Prop({ default: 0 })
   totally: number;

@@ -9,6 +9,12 @@ export class CartRepository {
   async findById(id: ObjectId): Promise<CartDocument> {
     return this.CartModel.findById(id);
   }
+  async findByUserId(id: ObjectId): Promise<CartDocument> {
+    return this.CartModel.findOne({ userId: id }).populate({
+      path: 'products',
+      select: ['name', 'price'],
+    });
+  }
 
   async create(cart: Cart): Promise<CartDocument> {
     const newCart = new this.CartModel(cart);

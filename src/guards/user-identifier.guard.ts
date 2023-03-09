@@ -9,10 +9,7 @@ export class UserIdentifierGuard implements CanActivate {
     private reflector: Reflector,
     private usersService: UsersService,
   ) {}
-  async canActivate(
-    //* Decorator eklediğimiz controller tetiklendiğinde çalışır
-    context: ExecutionContext,
-  ): Promise<boolean> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     if (request?.detectedUser) {
       const user = await this.usersService.findById(request.detectedUser);

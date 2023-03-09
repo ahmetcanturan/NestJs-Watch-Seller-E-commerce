@@ -8,12 +8,17 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { userInfo } from 'os';
+import { CartService } from 'src/cart/cart.service';
 import { UserIdentifierGuard } from 'src/guards/user-identifier.guard';
 import { ProductsService } from 'src/products/products.service';
 
 @Controller()
 export class PagesController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+    private readonly cartService: CartService,
+  ) {}
   @Get()
   @Render('index')
   index() {}
@@ -35,12 +40,20 @@ export class PagesController {
     return { bestSeller, lastProducts, getAll };
   }
 
-  @UseGuards(UserIdentifierGuard)
+  @UseGuards(UserIdentifierGuard) //* Buraya erişmek isteyen kullanıcının kimliğini tespit eder
   @Get('/cart')
   @Render('cart')
   async cart(@Req() req) {
-    console.log(req.findedUser);
-    return { products: [], totally: 100 };
+    const cart = await this.cartService.cartFindOrCreatebyUserId(
+      req.findedUser._id,
+    );
+    const totally = this.cartService.calculateCartTotally(cart.products);
+
+    return {
+      products: cart.products,
+      totally,
+      id: req.findedUser._id,
+    };
   }
 
   @Get('/login')

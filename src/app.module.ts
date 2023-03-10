@@ -10,6 +10,7 @@ import { JwtCookieAuthGuard } from './auth/jwt-cookie-auth.guard';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { CartModule } from './cart/cart.module';
+import { AdressModule } from './adress/adress.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CartModule } from './cart/cart.module';
     UsersModule,
     ProductsModule,
     CartModule,
+    AdressModule,
   ],
   controllers: [AppController],
   providers: [

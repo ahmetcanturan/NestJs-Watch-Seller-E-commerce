@@ -1,63 +1,53 @@
-<%- include("./partials/header.ejs") %>
-    <%- include("./partials/navbar.ejs") %>
+<%- include("./partials/header.ejs") %> <%- include("./partials/navbar.ejs") %>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Amount</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (item of Object.keys(amount)){%> <%var
+    product=products.filter((i)=>i._id==item)%>
+    <tr>
+      <th scope="row"><%=amount[item]%></th>
+      <td><%=product[0].name%></td>
+      <td><%=product[0].price%></td>
+      <form action="/cart/delete/<%=product[0]._id%>" method="post">
+        <td>
+          <button type="submit">
+            <i class="fa fa-remove" style="font-size: 24px; color: red"></i>
+          </button>
+        </td>
+      </form>
+    </tr>
+    <% }%>
+  </tbody>
+</table>
+<hr />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Totally</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" style="color: red"><%=totally%>$</th>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div class="btn-box">
+          <form action="/buy/<%=id%>" method="post">
+            <button class="btn btn-primary" type="submit">Buy</button>
+          </form>
+        </div>
+      </th>
+    </tr>
+  </tbody>
+</table>
 
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (item of products){%>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>
-                            <%=item.name%>
-                        </td>
-                        <td>
-                            <%=item.price%>
-                        </td>
-                        <form action="/cart/delete/<%=item.id%>" method="post">
-                            <td>
-                                <button type="submit">
-                                    <i class="fa fa-remove" style="font-size:24px;color:red"></i>
-                                </button>
-                            </td>
-                        </form>
-
-                    </tr>
-                    <% }%>
-            </tbody>
-        </table>
-        <hr>
-        <table class=" table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Totally</th>
-                </tr>
-
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" style="color:red">
-                        <%=totally%>$
-                    </th>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div class="btn-box">
-                            <form action="/buy/<%=id%>" method="post">
-                                <button class="btn btn-primary" type="submit">Buy</button>
-                            </form>
-                        </div>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-
-        <%- include("./partials/footer.ejs") %>
+<%- include("./partials/footer.ejs") %>

@@ -1,5 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AdressRepository } from 'src/adress/adress.repository';
+import { AdressService } from 'src/adress/adress.service';
+import { Adress, AdressSchema } from 'src/adress/schemas/adress.schema';
 import { CartRepository } from 'src/cart/cart.repository';
 import { CartService } from 'src/cart/cart.service';
 import { Cart, CartSchema } from 'src/cart/schemas/cart.schema';
@@ -16,6 +19,7 @@ import { PagesController } from './pages.controller';
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     MongooseModule.forFeature([{ name: Cart.name, schema: CartSchema }]),
+    MongooseModule.forFeature([{ name: Adress.name, schema: AdressSchema }]),
   ],
   controllers: [PagesController],
   providers: [
@@ -25,6 +29,8 @@ import { PagesController } from './pages.controller';
     UsersRepository,
     CartService,
     CartRepository,
+    AdressService,
+    AdressRepository,
   ],
 })
 export class PagesModule {}

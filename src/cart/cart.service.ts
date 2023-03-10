@@ -49,4 +49,25 @@ export class CartService {
       });
     }
   }
+  async removeProductFromCart(
+    productId: ObjectId,
+    userId: ObjectId,
+  ): Promise<boolean> {
+    const cart = await this.cartRepository.findByUserId(userId);
+    cart.products.splice(cart.products.indexOf(productId), 1);
+    await cart.save();
+    return true;
+  }
+
+  findSameProductsInCart(products: any): Object {
+    const uniqueList = new Set([]);
+    const amount: Object = {};
+    for (const product of products) {
+      uniqueList.add(product._id);
+    }
+    for (const id of uniqueList) {
+      amount[id] = products.filter((item) => item._id === id).length;
+    }
+    return amount;
+  }
 }

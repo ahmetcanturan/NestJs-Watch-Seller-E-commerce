@@ -53,13 +53,15 @@
                             <% }%>
                                 <% if(aut==="false" ) {%>
                                     <a href="/login">
-                                        <i class="fa fa-user" style="font-size:24px" aria-hidden="true"></i>
+                                        <i class="fa fa-user" style="font-size:24px" aria-hidden="true">  Login</i>
                                     </a>
                                     <% }%>
+                                     <% if(aut!=="false" ) {%>
                                         <a href="/cart">
                                             <i class="fa fa-shopping-cart" style="font-size:24px"
                                                 aria-hidden="true"></i>
                                         </a>
+                                         <% }%>
                     </div>
                 </div>
             </nav>

@@ -1,5 +1,6 @@
 import {
   Controller,
+  Delete,
   Param,
   Post,
   Redirect,
@@ -21,5 +22,12 @@ export class CartController {
       req.findedUser._id,
       param.id,
     );
+  }
+
+  @Post('delete/:id')
+  @UseGuards(UserIdentifierGuard)
+  @Redirect('/cart')
+  async RemoveProductFromCart(@Param() param, @Req() req) {
+    await this.cartService.removeProductFromCart(param.id, req.findedUser._id);
   }
 }

@@ -8,8 +8,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { userInfo } from 'os';
 import { CartService } from 'src/cart/cart.service';
+import { AdressFind } from 'src/guards/adress-find.guard';
 import { UserIdentifierGuard } from 'src/guards/user-identifier.guard';
 import { ProductsService } from 'src/products/products.service';
 
@@ -30,6 +30,31 @@ export class PagesController {
   @Get('/contact')
   @Render('contact')
   contact() {}
+  @Get('/register')
+  @Render('register')
+  getRegister() {}
+
+  @Get('/login')
+  @Render('login')
+  login() {}
+
+  @Get('/logout')
+  @Redirect('/login')
+  logout(@Res() response: Response) {
+    response.clearCookie('watch');
+  }
+
+  @Get('/adress/create')
+  @UseGuards(UserIdentifierGuard)
+  @UseGuards(AdressFind)
+  @Render('adress_create')
+  adress(@Req() req) {
+    return { userId: req.findedUser._id };
+  }
+
+  @Get('/product/create')
+  @Render('p_create')
+  getProductCreate() {}
 
   @Get('/products')
   @Render('products')
@@ -48,29 +73,13 @@ export class PagesController {
       req.findedUser._id,
     );
     const totally = this.cartService.calculateCartTotally(cart.products);
+    const amount = this.cartService.findSameProductsInCart(cart.products);
 
     return {
       products: cart.products,
       totally,
       id: req.findedUser._id,
+      amount,
     };
   }
-
-  @Get('/login')
-  @Render('login')
-  login() {}
-
-  @Get('/logout')
-  @Redirect('/login')
-  logout(@Res() response: Response) {
-    response.clearCookie('watch');
-  }
-
-  @Get('/register')
-  @Render('register')
-  getRegister() {}
-
-  @Get('/product/create')
-  @Render('p_create')
-  getProductCreate() {}
 }

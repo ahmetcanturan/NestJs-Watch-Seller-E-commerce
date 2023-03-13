@@ -40,11 +40,13 @@
     </tr>
     <tr>
       <th scope="row">
+        <%if(Object.keys(amount).length!=0){%>
         <div class="btn-box">
           <form action="/sale/buy/<%=id%>" method="post">
             <button class="btn btn-primary" type="submit">Buy</button>
           </form>
         </div>
+        <%}%>
       </th>
     </tr>
   </tbody>

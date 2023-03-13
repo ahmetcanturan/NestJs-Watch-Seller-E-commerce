@@ -3,7 +3,7 @@ import { initialize, getFormPayment } from '../payment_system/checkout';
 import Iyzipay from 'iyzipay';
 import moment from 'moment';
 import { nanoid } from 'src/utils/hashing';
-import { Observable } from 'rxjs';
+
 moment.locale('tr');
 
 @Injectable()
@@ -99,7 +99,7 @@ export class SaleService {
       });
   }
 
-  async saleControl(data: object) {
+  async saleControl(data: object): Promise<{ status: string }> {
     const json = await getFormPayment(data);
     return json;
   }

@@ -1,4 +1,4 @@
-import { Controller, Post, Param, Req, Res } from '@nestjs/common';
+import { Controller, Post, Param, Req, Res, Render } from '@nestjs/common';
 import { AdressService } from 'src/adress/adress.service';
 import { CartService } from 'src/cart/cart.service';
 import { UsersService } from 'src/users/users.service';
@@ -29,7 +29,11 @@ export class SaleController {
   }
 
   @Post('/checkout/complete/payment')
-  async saleControl(@Req() req) {
-    return this.saleService.saleControl(req.body);
+  @Render('sale')
+  async saleControl(@Req() req, @Res() res) {
+    const json = await this.saleService.saleControl(req.body);
+    if (json?.status !== 'success') {
+      res.json(json);
+    }
   }
 }

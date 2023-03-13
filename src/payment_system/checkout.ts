@@ -14,7 +14,7 @@ const initialize = async (data) => {
 };
 
 //? Ödemeyi Tamamlayan Method
-const getFormPayment = async (data) => {
+const getFormPayment = async (data): Promise<{ status: string }> => {
   return new Promise((resolve, reject) => {
     iyzipay.checkoutForm.retrieve(data, (err, result) => {
       if (err) {

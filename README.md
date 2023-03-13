@@ -1,3 +1,4 @@
+Proje Video: https://www.linkedin.com/posts/ahmet-can-turan_nodejs-nestjs-iyzico-activity-7041131050575507456-OjRj?utm_source=share&utm_medium=member_desktop
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>

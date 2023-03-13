@@ -15,7 +15,7 @@ export class CartService {
   async findById(id: ObjectId): Promise<CartDocument> {
     return this.cartRepository.findById(id);
   }
-  async findOne(id: ObjectId): Promise<CartDocument> {
+  async findByUserId(id: ObjectId): Promise<CartDocument> {
     return this.cartRepository.findByUserId(id);
   }
 
